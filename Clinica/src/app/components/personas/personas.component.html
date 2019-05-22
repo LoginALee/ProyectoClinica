@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <form #personaForm="ngForm" (ngSubmit)="addPersona(personaForm)">
+            <input type="hidden" name="_id" #_id="ngModel" 
+            [(ngModel)] ="personaService.selectedPersona._id">
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" name="nombre" #name="ngModel"
+                 [(ngModel)] ="personaService.selectedPersona.nombre"
+                 placeholder="Ingresa tu nombre">
+              </div>
+              <div class="input-field col s12">
+                  <input type="number" name="edad" #name="ngModel"
+                   [(ngModel)] ="personaService.selectedPersona.edad"
+                   placeholder="Ingresa tu edad">
+                </div>
+              <div class="input-field col s12">
+                  <input type="date" name="fechaNacimiento" #name="ngModel"
+                    [(ngModel)] ="personaService.selectedPersona.fechaNacimiento"
+                    placeholder="Ingresa tu fecha de nacimiento">
+                </div>
+              <div class="input-field col s12">
+                  <input type="text" name="nacionalidad" #name="ngModel"
+                  [(ngModel)] ="personaService.selectedPersona.nacionalidad"
+                  placeholder="Ingresa tu nacionalidad">
+                </div>
+              <div class="input-field col s12">
+                <input type="text" name="domicilio" #name="ngModel"
+                  [(ngModel)] ="personaService.selectedPersona.domicilio"
+                   placeholder="Ingresa tu domicilio">
+              </div>
+              <div class="input-field col s12">
+                  <input type="number" name="telefono" #name="ngModel"
+                   [(ngModel)] ="personaService.selectedPersona.telefono"
+                   placeholder="Ingresa tu telefono">
+                </div>
+                <div class="card-action">
+                  <div class="input-field col s12">
+                    <button class="btn right">Save</button>
+                    <button class="btn left" (click)="resetForm(personaForm)">Clean</button>
+                  </div>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s7">
+      <table>
+        <thead>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Fecha de nacimiento</th>
+          <th>nacionalidad</th>
+          <th>Domicilio</th>
+          <th>Telefono</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let persona of personaService.personas ">
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.edad}}</td>
+            <td>{{persona.fechaNacimiento}}</td>
+            <td>{{persona.nacionalidad}}</td>
+            <td>{{persona.domicilio}}</td>
+            <td>{{persona.telefono}}</td>
+            <td>
+              <a (click)="editPersona(persona)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click) = "deletePersona(persona._id)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
