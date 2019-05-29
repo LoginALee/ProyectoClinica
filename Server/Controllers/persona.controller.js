@@ -1,4 +1,7 @@
 const persona = require('../Models/persona');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const SECRET_KEY = 'secretkey123456';
 const personaCtrl = {};
 
 personaCtrl.getPersonas = async (req, res) =>{
